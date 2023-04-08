@@ -1,0 +1,22 @@
+{
+  "name": "e-commerce-website",
+  "version": "1.0.0",
+  "description": "Using Docker and Kubernetes and a node environment \r Hello test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IshaanShettigar/E-commerce-website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IshaanShettigar/E-commerce-website/issues"
+  },
+  "homepage": "https://github.com/IshaanShettigar/E-commerce-website#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
