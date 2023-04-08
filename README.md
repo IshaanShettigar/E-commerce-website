@@ -1,7 +1,7 @@
 # E-commerce-website
 Using Docker and Kubernetes and a node environment 
 
-
+```
 File system planned-
 ecommerce-project/
 ├── microservices/
@@ -55,3 +55,4 @@ ecommerce-project/
 ├── package.json
 ├── README.md
 └── server.js
+```
