@@ -1,27 +1,22 @@
 const express = require('express');
-const app = express();
-const cors = require('cors');
 const bodyParser = require('body-parser');
-const port = 3000;
+const authRoutes = require('./auth');
+const cartRoutes = require('./cart');
+const checkoutRoutes = require('./checkout');
+const ordersRoutes = require('./orders');
+const productsRoutes = require('./products');
+const { PORT } = require('./config/config');
+
+const app = express();
 
 app.use(bodyParser.json());
-app.use(cors());
 
-// Import routes
-const authRoutes = require('./microservices/authentication/routes');
-const catalogRoutes = require('./microservices/catalog/routes');
-const cartRoutes = require('./microservices/cart/routes');
-const orderRoutes = require('./microservices/order/routes');
-const paymentRoutes = require('./microservices/payment/routes');
-const userRoutes = require('./microservices/user/routes');
+app.use('/auth', authRoutes);
+app.use('/cart', cartRoutes);
+app.use('/checkout', checkoutRoutes);
+app.use('/orders', ordersRoutes);
+app.use('/products', productsRoutes);
 
-app.use('/api/authentication', authRoutes);
-app.use('/api/catalog', catalogRoutes);
-app.use('/api/cart', cartRoutes);
-app.use('/api/order', orderRoutes);
-app.use('/api/payment', paymentRoutes);
-app.use('/api/user', userRoutes);
-
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
