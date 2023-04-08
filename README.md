@@ -7,9 +7,9 @@ File system planned-
 ecommerce/
 │
 ├── auth/
-│   ├── auth.js
-│   ├── index.js
-│   └── users.js
+│   ├── auth.js - done
+│   ├── index.js - done
+│   └── users.js - done
 │
 ├── cart/
 │   ├── cart.js
@@ -29,11 +29,8 @@ ecommerce/
 │   ├── index.js
 │   └── products.js
 │
-├── config/
-│   ├── config.js
-│   └── db.js
-│
-├── app.js
+├── config.js
+├── iindex.js
 ├── package.json
 └── yarn.lock
 ```
