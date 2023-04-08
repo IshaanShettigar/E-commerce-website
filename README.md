@@ -3,55 +3,34 @@ Using Docker and Kubernetes and a node environment
 
 
 File system planned-
-ecommerce-project/
-├── microservices/
-│   ├── authentication/
-│   │   ├── package.json
-│   │   ├── server.js
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   └── routes/
-│   ├── catalog/
-│   │   ├── package.json
-│   │   ├── server.js
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   └── routes/
-│   ├── cart/
-│   │   ├── package.json
-│   │   ├── server.js
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   └── routes/
-│   ├── order/
-│   │   ├── package.json
-│   │   ├── server.js
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   └── routes/
-│   ├── payment/
-│   │   ├── package.json
-│   │   ├── server.js
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   └── routes/
-│   └── user/
-│       ├── package.json
-│       ├── server.js
-│       ├── controllers/
-│       ├── models/
-│       └── routes/
-├── common/
-│   ├── config/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   └── utils/
-├── data/
-│   ├── products.json
-│   ├── users.json
-│   └── orders.json
-├── node_modules/
+```
+ecommerce/
+│
+├── auth/
+│   ├── auth.js - done
+│   ├── index.js - done
+│   └── users.js - done
+│
+├── cart/
+│   ├── cart.js
+│   ├── index.js
+│   └── items.js
+│
+├── checkout/
+│   ├── checkout.js
+│   ├── index.js
+│   └── payment.js
+│
+├── orders/
+│   ├── index.js
+│   └── orders.js
+│
+├── products/
+│   ├── index.js
+│   └── products.js
+│
+├── config.js
+├── iindex.js
 ├── package.json
-├── README.md
-└── server.js
+└── yarn.lock
+```
