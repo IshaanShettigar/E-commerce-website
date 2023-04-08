@@ -7,37 +7,31 @@ File system planned-
 ecommerce-project/
 ├── microservices/
 │   ├── authentication/
-│   │   ├── package.json
 │   │   ├── server.js
 │   │   ├── controllers/
 │   │   ├── models/
 │   │   └── routes/
 │   ├── catalog/
-│   │   ├── package.json
 │   │   ├── server.js
 │   │   ├── controllers/
 │   │   ├── models/
 │   │   └── routes/
 │   ├── cart/
-│   │   ├── package.json
 │   │   ├── server.js
 │   │   ├── controllers/
 │   │   ├── models/
 │   │   └── routes/
 │   ├── order/
-│   │   ├── package.json
 │   │   ├── server.js
 │   │   ├── controllers/
 │   │   ├── models/
 │   │   └── routes/
 │   ├── payment/
-│   │   ├── package.json
 │   │   ├── server.js
 │   │   ├── controllers/
 │   │   ├── models/
 │   │   └── routes/
 │   └── user/
-│       ├── package.json
 │       ├── server.js
 │       ├── controllers/
 │       ├── models/
@@ -48,7 +42,7 @@ ecommerce-project/
 │   ├── models/
 │   ├── routes/
 │   └── utils/
-├── data/
+├── database/
 │   ├── products.json
 │   ├── users.json
 │   └── orders.json
