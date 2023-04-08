@@ -7,10 +7,10 @@ File system planned-
 ecommerce-project/
 ├── microservices/
 │   ├── authentication/
-│   │   ├── server.js
-│   │   ├── controllers/
-│   │   ├── models/
-│   │   └── routes/
+│   │   ├── server.js - done
+│   │   ├── controllers/ - done
+│   │   ├── models/ - tbd
+│   │   └── routes/ - done
 │   ├── catalog/
 │   │   ├── server.js
 │   │   ├── controllers/
@@ -37,7 +37,7 @@ ecommerce-project/
 │       ├── models/
 │       └── routes/
 ├── common/
-│   ├── config/
+│   ├── config/ - done
 │   ├── middleware/
 │   ├── models/
 │   ├── routes/
