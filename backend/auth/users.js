@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 async function registerUser(username, password) {
   try {
-    const userExistsQuery = {
+      const userExistsQuery = {
       text: 'SELECT * FROM users WHERE username = $1',
       values: [username],
     };
