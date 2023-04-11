@@ -8,13 +8,11 @@ ecommerce/
 │
 ├── auth/
 │   ├── auth.js - done
-│   ├── index.js - done
 │   └── users.js - done
 │
 ├── cart/
-│   ├── cart.js
-│   ├── index.js
-│   └── items.js
+│   ├── cart.js - done
+│   └── items.js - done
 │
 ├── checkout/
 │   ├── checkout.js
