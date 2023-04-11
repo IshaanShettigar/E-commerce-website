@@ -27,8 +27,7 @@ ecommerce/
 │   ├── index.js
 │   └── products.js
 │
-├── config.js
-├── iindex.js
-├── package.json
-└── yarn.lock
+├── config.js - done
+├── index.js - in progress 
+└── package.json - done
 ```
