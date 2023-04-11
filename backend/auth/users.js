@@ -9,7 +9,8 @@ async function registerUser(username, password) {
     };
     const userExistsResult = await pool.query(userExistsQuery);
     if (userExistsResult.rows.length > 0) {
-      throw new Error('User already exists');
+      console.log('User already exists');
+      return { message: 'User already exists' };
     }
     const createUserQuery = {
       text: 'INSERT INTO users(username, password) VALUES($1, $2)',
