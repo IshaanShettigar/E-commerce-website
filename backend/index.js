@@ -1,11 +1,15 @@
 const express = require("express")
 const app = express()
-const port = 3000
+const bodyParser = require('body-parser');
+const { PORT } = require("./config")
+const authRouter = require("./auth/auth");
+const cartRouter = require("./cart/cart");
 
-app.get("/", (req, res) => {
-    res.send("asdfrld")
-})
+app.use(bodyParser.json());
 
-app.listen(port, () => {
-    console.log(`Listening on ${port}`)
+app.use("/auth", authRouter);
+app.use("/cart", cartRouter);
+
+app.listen(PORT, () => {
+    console.log(`Listening on ${PORT}`)
 })
