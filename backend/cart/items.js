@@ -1,45 +1,96 @@
 const pool = require('../config');
-const jwt = require('jsonwebtoken');
 
-async function addItems(id, name, tag, price) {
+async function addItem(itemId, quantity) {
+    const client = await pool.connect();
     try {
-        const itemExistQuery = {
-            text: 'SELECT * FROM cart WHERE id = $1',
-            values: [id],
-        };
-        const itemExistResult = await pool.query(itemExistQuery);
-        if (itemExistResult.rows.length > 0) {
-            console.log('Item already exists');
-            return { message: 'Item already exists'}
+        const result = await client.query('SELECT quantity FROM cart WHERE item_id = $1', [itemId]);
+        let existingQuantity = 0;
+        if (result.rows.length > 0) {
+            existingQuantity = result.rows[0].quantity;
         }
-        const addItemQuery = {
-            text: 'INSERT INTO cart(id, name, tag, price) VALUES($1, $2, $3, $4)',
-            values: [id, name, tag, price],
-        };
-        await pool.query(addItemQuery);
-        console.log('Item added successfully');
-        return { message: 'Item added successfully' };
+        const newQuantity = existingQuantity + quantity;
+        if (newQuantity > 0) {
+            await client.query('DELETE FROM cart WHERE item_id = $1', [itemId]);
+            await client.query('INSERT INTO cart (item_id, quantity) VALUES ($1, $2)', [itemId, newQuantity]);
+        } else {
+        await client.query('DELETE FROM cart WHERE item_id = $1', [itemId]);
+        }
+        await client.query('COMMIT');
+        return 'Item added to cart';
     } catch (err) {
-        console.error(err);
-        throw new Error('Internal server error');
+        await client.query('ROLLBACK');
+        throw err;
+    } finally {
+        client.release();
     }
 }
 
-async function getItems(id) {
+async function updateItem(itemId, quantity) {
+    const client = await pool.connect();
     try {
-        const getItemQuery = {
-            text: 'SELECT * FROM cart WHERE id = $1',
-            values: [id],
-        };
-        const getItemResult = await pool.query(getItemQuery);
-        if (getItemResult.rows.length === 0) {
-            throw new Error('Invalid item');
+        await client.query('BEGIN');
+
+        if (quantity > 0) {
+        await client.query('INSERT INTO cart (item_id, quantity) VALUES ($1, $2) ON CONFLICT (item_id) DO UPDATE SET quantity = $2', [itemId, quantity]);
+        } else {
+        await client.query('DELETE FROM cart WHERE item_id = $1', [itemId]);
         }
-        return getItemResult.rows;
+
+        await client.query('COMMIT');
+        return 'Cart updated';
     } catch (err) {
-        console.error(err);
-        throw new Error('Internal server error');
+        await client.query('ROLLBACK');
+        throw err;
+    } finally {
+        client.release();
     }
 }
 
-module.exports = { addItems, getItems };
+async function removeItem(itemId) {
+    const client = await pool.connect();
+    try {
+        await client.query('BEGIN');
+        await client.query('DELETE FROM cart WHERE item_id = $1', [itemId]);
+        await client.query('COMMIT');
+        return 'Item removed from cart';
+    } catch (err) {
+        await client.query('ROLLBACK');
+        throw err;
+    } finally {
+        client.release();
+    }
+}
+
+async function getCart() {
+    const client = await pool.connect();
+    try {
+        const result = await client.query('SELECT * FROM cart');
+        return result.rows;
+    } catch (err) {
+        throw err;
+    } finally {
+        client.release();
+    }
+}
+
+async function getTotal() {
+    const client = await pool.connect();
+    try {
+        const result = await client.query('SELECT SUM(price * quantity) AS total FROM cart INNER JOIN items ON cart.item_id = items.id');
+        return result.rows[0].total;
+    } catch (err) {
+        throw err;
+    } finally {
+        client.release();
+    }
+}
+
+
+module.exports = 
+{ 
+    addItem, 
+    updateItem, 
+    removeItem, 
+    getCart, 
+    getTotal 
+};
