@@ -10,6 +10,7 @@ app.use(bodyParser.json());
 app.use("/auth", authRouter);
 // app.use("/cart", cartRouter);
 
+
 app.listen(PORT, () => {
     console.log(`Listening on ${PORT}`)
 })

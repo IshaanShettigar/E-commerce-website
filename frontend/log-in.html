@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Log in - Splitwise</title>
+    <title>Log in</title>
     <link rel="stylesheet" href="log-in.css" />
 
 </head>
@@ -13,17 +13,15 @@
     <main>
         <div class="form-box">
             <h3>Log in</h3>
-            <form>
+            <form action="" method="post">
                 <div class="input-group">
                     <div class="input-field">
-
-                        <label>Email:</label>
-                        <input type="email" required />
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" required />
                     </div>
                     <div class="input-field">
-                        <label>Password:</label>
-
-                        <input type="password" required />
+                        <label for="password">Password:</label>
+                        <input type="password" name="password" id="password" required />
                     </div>
                     <div class="button-field">
                         <button type="submit">Log In</button>
