@@ -2,7 +2,7 @@ const express = require("express");
 const { registerUser, loginUser } = require("./users.js")
 const authRouter = express.Router();
 
-authRouter.post("./register", async (req, res) => {
+authRouter.post("/register", async (req, res) => {
     try {
         const { username, password } = req.body
         const result = await registerUser(username, password);
@@ -14,7 +14,7 @@ authRouter.post("./register", async (req, res) => {
     }
 });
 
-authRouter.post("./login", async (req, res) => {
+authRouter.post("/login", async (req, res) => {
     try {
         const { username, password } = req.body;
         const result = await loginUser(username, password);
@@ -22,9 +22,9 @@ authRouter.post("./login", async (req, res) => {
 
     } catch (err) {
         console.log(err)
-        res.status(500).json({ message: "Internal Server Error" })
+        res.status(401).json({ error: "Invalid Credentials" })
     }
 })
 
 // why tha fok are we exporting authrouter
-module.exports = { authRouter };
+module.exports = authRouter;

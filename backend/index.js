@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 const bodyParser = require('body-parser');
 const { PORT } = require("./config")
-const authRouter = require("./auth/auth.js");
+const authRouter = require("./auth/auth");
 // const cartRouter = require("./cart/cart");
 
 app.use(bodyParser.json());
