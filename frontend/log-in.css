@@ -16,9 +16,9 @@
 main {
     width: 100%;
     height: 100vh;
-    background-image: url("white-polygon-bg.jpg");
-    background-position: center;
+    background-image: url("./images/plant-bg.jpg");
     background-size: cover;
+
     position: relative;
 }
 
@@ -32,7 +32,7 @@ main {
     background: #fff;
     padding: 50px 60px 70px;
     text-align: center;
-    box-shadow: 0 0 10px 1px rgba(191, 191, 191, 0.5);
+    box-shadow: 0 0 10px 10px rgba(191, 191, 191, 0.4);
     border-radius: 15px;
 
 }
@@ -93,7 +93,7 @@ a {
     text-decoration: none;
 }
 
-a::before {
+.form-box a::before {
     content: '';
     position: absolute;
     width: 100%;
@@ -110,4 +110,58 @@ a::before {
 a:hover::before {
     transform-origin: left;
     transform: scaleX(1);
+}
+
+.logo {
+    height: 70px;
+    width: 70px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 80px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.10);
+    position: sticky;
+    z-index: 999;
+    top: 0;
+    left: 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+.navbar li a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.2s ease;
+}
+
+.navbar li a:hover,
+.navbar li a.active {
+    color: #088178;
+}
+
+.navbar li a.active::after,
+.navbar li a:hover::after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    background: #088178;
+    position: absolute;
+    left: 0px;
+    bottom: -4px;
 }
