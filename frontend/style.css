@@ -230,3 +230,82 @@ footer .copyright {
     width: 100%;
     text-align: center;
 }
+
+/* shop */
+
+#pagination {
+    text-align: center;
+}
+
+#pagination a {
+    text-decoration: none;
+    background-color: #088178;
+    padding: 12px 16px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+}
+
+#pagination a i {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* single product */
+
+#prodetails {
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 80px;
+}
+
+
+
+#prodetails img {
+    width: 70%;
+}
+
+#prodetails .details {
+    width: 50%;
+    padding-top: 30px;
+}
+
+#prodetails .details h4 {
+    padding: 40px 0 20px 0;
+}
+
+#prodetails .details h2 {
+    font-size: 26px;
+}
+
+#prodetails .details select {
+    padding: 5px 5px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.normal {
+    padding: 5px 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+#prodetails button:hover {
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+/* #prodetails .prod-img-div {
+    width: 60%
+} */
+
+#prodetails button {
+    background-color: #088178;
+    color: #fff;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+#prodetails .details span {
+    line-height: 25px;
+}
