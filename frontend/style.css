@@ -173,6 +173,10 @@ body {
     right: 20px;
 }
 
+.pro-container a {
+    text-decoration: none;
+}
+
 /*footer*/
 footer {
     display: flex;
@@ -372,4 +376,42 @@ footer .copyright {
 
 #cart table tbody td {
     font-size: 15px;
+}
+
+#cart-add {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#cart-add .subtotal {
+    margin-right: 50px;
+    margin-bottom: 30px;
+    border: 1px solid #e2e9e1;
+    padding: 30px;
+    min-width: 300px;
+    width: 400px;
+}
+
+#cart-add .subtotal table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.subtotal table td {
+    border: 1px solid #e2e9e1;
+    padding: 10px;
+    font-size: 13px;
+}
+
+.subtotal h3 {
+    padding-bottom: 15px;
+}
+
+.subtotal button {
+    background-color: #088178;
+    color: #fff;
+    padding: 12px 20px;
 }
