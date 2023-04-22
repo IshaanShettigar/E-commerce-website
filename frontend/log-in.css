@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+.form-box h3 {
+    margin-bottom: 40px;
+    font-size: 30px;
+    position: relative;
+    font-family: 'Lucida Grande',
+
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    background-image: url("./images/plant-bg.jpg");
+    background-size: cover;
+
+    position: relative;
+}
+
+.form-box {
+    width: 90%;
+    max-width: 450px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 50px 60px 70px;
+    text-align: center;
+    box-shadow: 0 0 10px 10px rgba(191, 191, 191, 0.4);
+    border-radius: 15px;
+
+}
+
+.input-field {
+    background: #eaeaea;
+    margin: 15px 0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.input-field input {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    padding: 18px 15px;
+    font-size: large;
+}
+
+.input-field label {
+    margin-left: 10px;
+    font-size: large;
+}
+
+.button-field {
+    width: 100%;
+    display: inline-block;
+    justify-content: space-between;
+    margin: 12px auto 20px auto;
+
+}
+
+.button-field button {
+    background: #07a868;
+    color: #fff;
+    border: 0;
+    outline: 0;
+    padding: 8px 8px;
+    width: 50%;
+    font-size: large;
+    cursor: pointer;
+
+}
+
+button:hover {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+h4 {
+    font-weight: 100;
+}
+
+a {
+    color: #18272F;
+    position: relative;
+    text-decoration: none;
+}
+
+.form-box a::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #18272F;
+    bottom: 0;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .2s ease-in-out;
+}
+
+a:hover::before {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.logo {
+    height: 70px;
+    width: 70px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 80px;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.10);
+    position: sticky;
+    z-index: 999;
+    top: 0;
+    left: 0;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar li {
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+}
+
+.navbar li a {
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+    transition: 0.2s ease;
+}
+
+.navbar li a:hover,
+.navbar li a.active {
+    color: #088178;
+}
+
+.navbar li a.active::after,
+.navbar li a:hover::after {
+    content: "";
+    height: 2px;
+    width: 100%;
+    background: #088178;
+    position: absolute;
+    left: 0px;
+    bottom: -4px;
+}
