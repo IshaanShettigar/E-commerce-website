@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        }
+
+        /* Style the title */
+        h1 {
+        font-size: 2em;
+        margin-top: 1em;
+        }
+
+        /* Style the product and cart lists */
+        ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        }
+
+        /* Style the list items */
+        li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 0.5em;
+        padding: 0.5em;
+        background-color: #f5f5f5;
+        border-radius: 0.25em;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style the remove button */
+        button {
+        margin-left: 1em;
+        padding: 0.5em;
+        background-color: #ff4136;
+        color: white;
+        border: none;
+        border-radius: 0.25em;
+        cursor: pointer;
+        }
+
+        /* Style the add to cart button */
+        button + button {
+        margin-left: auto;
+        background-color: #0074d9;
+        }
+
+        /* Style the cart */
+        #cart {
+        margin-top: 1em;
+        }
+
+        /* Style the empty cart message */
+        #cart:empty::before {
+        content: "Your cart is empty";
+        font-style: italic;
+        color: #aaa;
+        }
+
+        /* Style the messages */
+        .message {
+        margin: 1em;
+        padding: 0.5em;
+        background-color: #2ecc40;
+        color: white;
+        border-radius: 0.25em;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Shopping Cart</h1>
+    <ul id="cart"></ul>
+    <h2>Products</h2>
+    <ul id="products"></ul>
+    <script>
+        const cart = [];
+
+        function addToCart(item) {
+            const existingItem = cart.find((cartItem) => cartItem.id === item.id);
+            if (existingItem) {
+                existingItem.count += 1;
+            } else {
+                cart.push({ ...item, count: 1 });
+            }
+            renderCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        function renderCart() {
+            const cartElement = document.getElementById('cart');
+            cartElement.innerHTML = '';
+            let totalPrice = 0;
+            cart.forEach((item, index) => {
+                const li = document.createElement('li');
+                li.textContent = `${item.name} x ${item.count} = Rs. ${item.price * item.count}`;
+                const decreaseButton = document.createElement('button');
+                decreaseButton.textContent = '-';
+                decreaseButton.addEventListener('click', () => {
+                decreaseCount(index);
+                });
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.addEventListener('click', () => {
+                removeFromCart(index);
+                });
+                li.appendChild(decreaseButton);
+                li.appendChild(removeButton);
+                cartElement.appendChild(li);
+                totalPrice += item.price * item.count;
+            });
+            const totalPriceElement = document.getElementById('total-price');
+            totalPriceElement.textContent = `Total price: $${totalPrice}`;
+            const totalCartElement = document.getElementById('total-cart');
+            totalCartElement.textContent = `Total items in cart: ${cart.reduce((total, item) => total + item.count, 0)}`;
+        }
+
+
+
+        function decreaseCount(index) {
+            const item = cart[index];
+            item.count -= 1;
+            if (item.count === 0) {
+                cart.splice(index, 1);
+            }
+            renderCart();
+        }
+
+        async function renderProducts() {
+            const productsElement = document.getElementById('products');
+            const response = await fetch('/products/catalogue');
+            const products = await response.json();
+            products.forEach((product) => {
+                const li = document.createElement('li');
+                const nameElement = document.createElement('h3');
+                nameElement.textContent = product.name;
+                li.appendChild(nameElement);
+                const descriptionElement = document.createElement('p');
+                descriptionElement.textContent = product.description;
+                li.appendChild(descriptionElement);
+                const priceElement = document.createElement('p');
+                priceElement.textContent = `Price: Rs. ${product.price}`;
+                li.appendChild(priceElement);
+                const button = document.createElement('button');
+                button.textContent = 'Add to cart';
+                button.addEventListener('click', () => {
+                addToCart(product);
+                });
+                li.appendChild(button);
+                productsElement.appendChild(li);
+            });
+        }
+        window.addEventListener('load', renderProducts);
+    </script>
+  </body>
+</html>

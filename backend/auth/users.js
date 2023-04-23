@@ -1,5 +1,4 @@
 const pool = require('../config');
-const jwt = require('jsonwebtoken');
 
 async function registerUser(username, password) {
   try {
@@ -10,15 +9,15 @@ async function registerUser(username, password) {
     const userExistsResult = await pool.query(userExistsQuery);
     if (userExistsResult.rows.length > 0) {
       console.log('User already exists');
-      return { message: 'User already exists' };
+      return ('0');
     }
     const createUserQuery = {
       text: 'INSERT INTO users(username, password) VALUES($1, $2)',
       values: [username, password],
     };
     await pool.query(createUserQuery);
-    console.log('User created successfully')
-    return { message: 'User created successfully' };
+    console.log('User created');
+    return ('1');
   } catch (err) {
     console.error(err);
     throw new Error('Internal server error');
@@ -33,20 +32,17 @@ async function loginUser(username, password) {
     };
     const userExistsResult = await pool.query(userExistsQuery);
     if (userExistsResult.rows.length === 0) {
-      throw new Error('Invalid credentials');
+      throw new Error('0');
     }
-
     const dbPassword = userExistsResult.rows[0].password;
 
     if (password !== dbPassword) {
-      throw new Error('Invalid credentials');
+      throw new Error('0');
     }
     else {
       console.log('Password match');
     }
-
-    const token = await jwt.sign({ id: userExistsResult.rows[0].id }, process.env.JWT_SECRET);
-    return { token };
+    return "1";
   } catch (err) {
     console.error(err);
     throw new Error('Internal server error');
