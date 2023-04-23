@@ -1,7 +1,12 @@
 # E-commerce-website
 Using Docker and Kubernetes and a node environment 
-Front end is created and navigable. Use the LiveServer in VSCode to set it up
-We will integrate the front end and backend soon.
+
+How to use-
+``` 
+cd .\backend\
+docker build -t backend .
+docker run -p 3000:3000 
+```
 
 File system planned-
 ```
