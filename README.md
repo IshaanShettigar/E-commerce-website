@@ -14,20 +14,17 @@ ecommerce/
 │   ├── cart.js - done
 │   └── items.js - done
 │
-├── checkout/
-│   ├── checkout.js
-│   ├── index.js
-│   └── payment.js
-│
-├── orders/
-│   ├── index.js
-│   └── orders.js
-│
 ├── products/
-│   ├── index.js
-│   └── products.js
-│
+│   |── catalogue.js - done
+│   └── items.js - done
+|
+├── public/
+|   |── catalogue.html - done
+│   |── index.js - done
+│   |── index.html - done
+│   └── index.css - done
+|
 ├── config.js - done
-├── index.js - in progress 
+├── index.js - done
 └── package.json - done
 ```
