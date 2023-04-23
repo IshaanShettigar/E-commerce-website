@@ -1,15 +1,14 @@
-const express = require('express');
+const authRouter = require('express').Router();
 const { registerUser, loginUser } = require('./users');
-const authRouter = express.Router();
 
 authRouter.post('/register', async (req, res) => {
   try {
     const { username, password } = req.body;
     const result = await registerUser(username, password);
-    res.status(201).json(result);
+    res.status(201).send({ success: result });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ success: '0' });
   }
 });
 
@@ -17,10 +16,15 @@ authRouter.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body;
     const result = await loginUser(username, password);
-    res.json(result);
+
+    if (result) {
+      res.status(200).send({ success :result });
+    } else {
+      res.status(401).json({ success: '0' });
+    }
   } catch (err) {
     console.error(err);
-    res.status(401).json({ error: 'Invalid credentials' });
+    res.status(500).json({ success: '0' });
   }
 });
 
