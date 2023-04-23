@@ -1,11 +1,19 @@
 # E-commerce-website
 Using Docker and Kubernetes and a node environment 
+## Please install npm before going any further
 
-How to use-
+How to use(Windows)-
 ``` 
 cd .\backend\
 docker build -t backend .
 docker run -p 3000:3000 
+```
+
+How to use(Ubuntu)-
+``` 
+cd .\backend\
+docker build -t backend .
+docker run backend 
 ```
 
 File system planned-
