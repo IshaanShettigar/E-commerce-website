@@ -1,21 +1,29 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
-const authRoutes = require('./auth/auth');
-const cartRoutes = require('./cart/cart');
-// const checkoutRoutes = require('./checkout');
-// const ordersRoutes = require('./orders');
-// const productsRoutes = require('./products');
-const { PORT } = require('./config');
+const cors = require('cors');
+const authRouter = require('./auth/auth');
+const cartRouter = require('./cart/cart');
+const catalogueRouter = require('./products/catalogue');
+const path = require('path');
 
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(cors());
 
-app.use('/auth', authRoutes);
-app.use('/cart', cartRoutes);
-// app.use('/checkout', checkoutRoutes);
-// app.use('/orders', ordersRoutes);
-// app.use('/products', productsRoutes);
+app.use(express.static('public'));
 
-app.listen(3000, () => {
-  console.log(`Server listening on port ${3000}`);
+app.use('/auth', authRouter);
+app.use('/cart', cartRouter);
+app.use('/products/catalogue', catalogueRouter);
+
+app.get('/login', (req, res) => {
+  res.sendFile(__dirname + '/public/index.html');
+});
+app.get('/catalogue', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'catalogue.html'));
+});
+
+
+const PORT = 5000;
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
